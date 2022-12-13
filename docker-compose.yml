@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  microservicejs:
+    build: .
+    environment:
+      - PORT=8080
+      - MONGODB=mongodb://db:27017/dbsuscription
+      - STRIPE_SECRET_KEY=sk_test_51IYfPsErLdKXC5f5LyJnkx5vQVsSMDVeCRPJJFLxSANoMS6pgbXXAxfpOH4Gy1vyBNeSDuil0Tmv42aIOPJrYc0N00rZLGHnMg
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
